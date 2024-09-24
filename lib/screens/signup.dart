@@ -50,7 +50,7 @@ class _MySignUpState extends State<MySignUp> {
             Column(
               children: [
                 SizedBox(
-                  height: !isLandscapeMobile ? 130 : 10,
+                  height: !isLandscapeMobile ? 100 : 10,
                 ),
                 Expanded(
                   child: Container(
@@ -76,7 +76,7 @@ class _MySignUpState extends State<MySignUp> {
                               color: Color.fromARGB(255, 95,67,195)
                             )),
                             Transform.translate(
-                              offset: const Offset(0, -20.0),
+                              offset: const Offset(0, -15.0),
                               child: Row(
                                 children: [
                                   const Text('Already have an account?', style: TextStyle(
@@ -144,7 +144,7 @@ class _MySignUpState extends State<MySignUp> {
                                       ),
                                     ),
                                     Transform.translate(
-                                      offset: const Offset(-15, 0),
+                                      offset: const Offset(-10, 0),
                                       child: const Text(
                                         'Remember me',
                                         style: TextStyle(
@@ -203,7 +203,7 @@ class _MySignUpState extends State<MySignUp> {
                                       SizedBox(width: 10),
                                       MyIcon(icon: FontAwesomeIcons.twitter, color: Colors.blue),
                                       SizedBox(width: 10),
-                                      MyIcon(icon: FontAwesomeIcons.google, color: Colors.red),
+                                      MyIcon(icon: FontAwesomeIcons.googlePlusG, color: Colors.red),
                                     ],
                                   )
                                 ],

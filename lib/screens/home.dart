@@ -16,7 +16,9 @@ class _MyHomeState extends State<MyHome> {
     var screenWidth = MediaQuery.of(context).size.width;
 
     // Define a threshold for mobile/tablet screens (e.g., 600)
-    bool isMobileOrTablet = screenWidth < 600;
+    bool isMobileOrTablet = screenWidth < 800;
+
+    
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -50,7 +52,7 @@ class _MyHomeState extends State<MyHome> {
               decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 95,67,195),
               ),
-              width: 220,
+              width: 250,
               child: const MyDrawer(),
             ) : Container(),
             const Expanded(

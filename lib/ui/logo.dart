@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MyLogo extends StatelessWidget {
-  const MyLogo({super.key});
+class MyLogo extends StatefulWidget {
+  const MyLogo({super.key, this.size});
 
+  final double? size;
+
+  @override
+  State<MyLogo> createState() => _MyLogoState();
+}
+
+class _MyLogoState extends State<MyLogo> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,8 +23,8 @@ class MyLogo extends StatelessWidget {
           ),
           Transform.translate(
             offset: const Offset(0, -10),
-            child: const Text('PARKING GO', style: TextStyle(
-              fontSize: 35,
+            child: Text('PARKING GO', style: TextStyle(
+              fontSize: widget.size ?? 35,
               fontWeight: FontWeight.w900,
               color: Colors.white
             )),

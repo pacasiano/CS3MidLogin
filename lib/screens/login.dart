@@ -18,10 +18,11 @@ class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
 
-    bool isLandscapeMobile = MediaQuery.of(context).size.height < 450;
+    bool isLandscapeMobile = MediaQuery.of(context).size.height < 600;
 
     // if mobile=200, tablet=400, desktop=600, web=800
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     double mediaQueries;
 
     if (screenWidth < 600) {
@@ -51,11 +52,11 @@ class _MyLoginState extends State<MyLogin> {
             Column(
               children: [
                 SizedBox(
-                  height: !isLandscapeMobile ? 340 : 10,
-                  child: !isLandscapeMobile ? Transform.translate(
+                  height: !isLandscapeMobile ? 300 : 10,
+                  child: Transform.translate(
                     offset: const Offset(0, 20),
-                    child: const MyLogo()
-                  ): null
+                    child: const Center(child: MyLogo())
+                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -81,7 +82,7 @@ class _MyLoginState extends State<MyLogin> {
                               color: Color.fromARGB(255, 95,67,195)
                             )),
                             Transform.translate(
-                              offset: const Offset(0, -20.0),
+                              offset: const Offset(0, -15.0),
                               child: Row(
                                 children: [
                                   const Text('Dont have an account?', style: TextStyle(
@@ -141,7 +142,7 @@ class _MyLoginState extends State<MyLogin> {
                                       ),
                                     ),
                                     Transform.translate(
-                                      offset: const Offset(-15, 0),
+                                      offset: const Offset(-10, 0),
                                       child: const Text(
                                         'Remember me',
                                         style: TextStyle(
@@ -205,9 +206,10 @@ class _MyLoginState extends State<MyLogin> {
                                       SizedBox(width: 10),
                                       MyIcon(icon: FontAwesomeIcons.twitter, color: Colors.blue),
                                       SizedBox(width: 10),
-                                      MyIcon(icon: FontAwesomeIcons.google, color: Colors.red),
+                                      MyIcon(icon: FontAwesomeIcons.googlePlusG, color: Colors.red),
                                     ],
-                                  )
+                                  ),
+                                  const SizedBox(height: 30)
                                 ],
                               ),
                             ),
@@ -222,6 +224,48 @@ class _MyLoginState extends State<MyLogin> {
           ],
         ),
       )
+    );
+  }
+}
+
+class DraggableSizedBox extends StatefulWidget {
+  const DraggableSizedBox({super.key});
+
+  @override
+  DraggableSizedBoxState createState() => DraggableSizedBoxState();
+}
+
+class DraggableSizedBoxState extends State<DraggableSizedBox> {
+  double boxHeight = 200.0; // Initial height of the box
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final isLandscapeMobile = MediaQuery.of(context).orientation == Orientation.landscape;
+
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {
+        setState(() {
+          // Update the height by the vertical drag delta
+          boxHeight += details.delta.dy;
+
+          // Ensure the height stays within reasonable bounds (e.g., not below 100)
+          if (boxHeight < 100.0) {
+            boxHeight = 100.0;
+          } else if (boxHeight > screenHeight * 0.8) {
+            boxHeight = screenHeight * 0.8;
+          }
+        });
+      },
+      child: SizedBox(
+        height: boxHeight,
+        child: !isLandscapeMobile
+            ? Transform.translate(
+                offset: const Offset(0, 20),
+                child: const MyLogo(),
+              )
+            : null,
+      ),
     );
   }
 }

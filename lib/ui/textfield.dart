@@ -65,9 +65,13 @@ class _MyTextFieldState extends State<MyTextField> {
           fontWeight: FontWeight.w100
         ),
         labelText: widget.label,
-        border: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Color.fromARGB(255, 85, 56, 92))
+
+        enabledBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Color.fromARGB(255, 85, 56, 92), 
+          )
         ),
+        
         suffixIcon: _buildSuffixIcon(),
       ),
       onChanged: (value) {

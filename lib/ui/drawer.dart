@@ -22,7 +22,7 @@ class _MyDrawerState extends State<MyDrawer> {
             ),
             padding: const EdgeInsets.all(10),
             height: 150,
-            child: const MyLogo()
+            child: const MyLogo(size: 30,)
           ),
           const Padding(
             padding: EdgeInsets.all(10.0),
